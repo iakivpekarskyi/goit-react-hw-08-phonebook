@@ -9,9 +9,6 @@ import {
 } from './ContactForm.styled';
 
 import { useContacts } from 'hooks/useContact';
-import { useSelector } from 'react-redux';
-
-import { selectContacts } from 'redux/selectors';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
