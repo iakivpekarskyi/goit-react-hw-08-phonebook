@@ -1,30 +1,21 @@
+import { Routes, Route } from 'react-router-dom';
+import { lazy } from 'react';
 import { Layout } from './App.styled';
-import { GlobalStyles } from 'components/GlobalStyle';
-import { ContactForm } from '../ContactForm/ContactForm';
-import { ContactList } from '../ContactList/ContactList';
-import { Filter } from '../Filter/Filter';
-import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 
-import { useEffect } from 'react';
-import { useContacts } from 'hooks/useContact';
+const HomePage = lazy(() => import('../../pages/HomePage'));
+const RegisterPage = lazy(() => import('../../pages/RegisterPage'));
+const LoginPage = lazy(() => import('../../pages/LoginPage'));
+const ContactsPage = lazy(() => import('../../pages/ContactsPage'));
 
 export const App = () => {
-  const { contacts, fetchAllContacts } = useContacts();
-
-  useEffect(() => {
-    fetchAllContacts();
-  }, [fetchAllContacts]);
-
   return (
-    <Layout>
-      <ErrorBoundary fallback="Sorry something went wrong ">
-        <GlobalStyles />
-        <h1>Phone book</h1>
-        <ContactForm />
-        <h2>Contacts</h2>
-        {contacts && contacts.length !== 0 && <Filter />}
-        <ContactList />
-      </ErrorBoundary>
-    </Layout>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/contacts" element={<ContactsPage />} />
+      </Route>
+    </Routes>
   );
 };
