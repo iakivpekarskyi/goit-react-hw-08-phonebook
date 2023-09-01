@@ -2,13 +2,15 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 // import { Loader } from 'components/Loader/Loader';
 // import { AppBar } from 'components/AppBar/AppBar';
-import { Test } from 'pages/Test';
+import Home from '../../pages/Home';
 
-export const Layout = () => {
+const Layout = () => {
   return (
     <>
-      <Test />
+      <Home />
       <Outlet />
     </>
   );
 };
+
+export default Layout;

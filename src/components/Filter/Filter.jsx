@@ -4,6 +4,9 @@ import { FilterInput } from './Filter.styled';
 import { selectFilter } from 'redux/selectors';
 import { setFilter } from 'redux/filterSlice';
 
+import TextField from '@mui/material/TextField';
+import Box from '@mui/material/Box';
+
 export const Filter = () => {
   const dispatch = useDispatch();
   const filter = useSelector(selectFilter);
@@ -14,13 +17,22 @@ export const Filter = () => {
   };
 
   return (
-    <FilterWrap>
-      <FilterInput
+    <Box
+      component="form"
+      noValidate
+      autoComplete="off"
+      sx={{ width: '100%', maxWidth: 350 }}
+    >
+      <TextField
+        id="outlined-basic"
+        label="Find contacts by name"
+        variant="outlined"
         type="text"
-        placeholder="Search for contact"
+        size="small"
         value={filter}
         onChange={onFilterChange}
-      ></FilterInput>
-    </FilterWrap>
+        fullWidth
+      />
+    </Box>
   );
 };

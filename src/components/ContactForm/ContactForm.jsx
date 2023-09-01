@@ -1,14 +1,12 @@
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import {
-  FormikForm,
-  Label,
-  FormikField,
-  ErrorText,
-  FormBtn,
-} from './ContactForm.styled';
+import { FormikForm, FormikField } from './ContactForm.styled';
 
 import { useContacts } from 'hooks/useContact';
+
+import { TextField } from 'formik-mui';
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -52,17 +50,31 @@ export const ContactForm = () => {
       onSubmit={handleSubmit}
     >
       <FormikForm autoComplete="off">
-        <Label>
-          Name
-          <FormikField type="text" name="name" />
-          <ErrorText name="name" component="p" />
-        </Label>
-        <Label>
-          Number
-          <FormikField type="tel" name="number" />
-          <ErrorText name="number" component="p" />
-        </Label>
-        <FormBtn type="submit">Add contact</FormBtn>
+        <Box marginY={2} sx={{ width: 350 }}>
+          <FormikField
+            component={TextField}
+            label="Name*"
+            type="text"
+            name="name"
+            size="small"
+            fullWidth
+          />
+        </Box>
+
+        <Box marginY={4} sx={{ width: 350 }}>
+          <FormikField
+            component={TextField}
+            label="Number*"
+            type="tel"
+            name="number"
+            size="small"
+            fullWidth
+          />
+        </Box>
+
+        <Button type="submit" fullWidth variant="contained" size="medium">
+          Add contact
+        </Button>
       </FormikForm>
     </Formik>
   );

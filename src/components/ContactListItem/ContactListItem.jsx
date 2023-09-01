@@ -1,10 +1,6 @@
-import {
-  ListItem,
-  Text,
-  Button,
-  ButtonContainer,
-} from './ContactListItem.styled';
+import { ListItem, Text, ButtonContainer } from './ContactListItem.styled';
 import { useContacts } from 'hooks/useContact';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
 export const ContactListItem = ({ id, name, number }) => {
   const { removeContact } = useContacts();
@@ -12,12 +8,13 @@ export const ContactListItem = ({ id, name, number }) => {
   return (
     <ListItem>
       <Text>
-        {name}: {number}
+        {name} : {number}
       </Text>
       <ButtonContainer>
-        <Button type="button" onClick={() => removeContact(id)}>
-          Delete Contact
-        </Button>
+        <DeleteOutlineIcon
+          sx={{ color: '#000a', cursor: 'pointer' }}
+          onClick={() => removeContact(id)}
+        />
       </ButtonContainer>
     </ListItem>
   );
