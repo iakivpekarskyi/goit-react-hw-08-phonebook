@@ -1,6 +1,5 @@
-import { Formik } from 'formik';
+import { Field, Formik, Form } from 'formik';
 import * as Yup from 'yup';
-import { FormikForm, FormikField } from './ContactForm.styled';
 
 import { useContacts } from 'hooks/useContact';
 
@@ -44,38 +43,47 @@ export const ContactForm = () => {
   };
 
   return (
-    <Formik
-      initialValues={initialValues}
-      validationSchema={validationSchema}
-      onSubmit={handleSubmit}
-    >
-      <FormikForm autoComplete="off">
-        <Box marginY={2} sx={{ width: 350 }}>
-          <FormikField
-            component={TextField}
-            label="Name*"
-            type="text"
-            name="name"
-            size="small"
-            fullWidth
-          />
-        </Box>
+    <>
+      <h2>Add Contact</h2>
+      <Formik
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        onSubmit={handleSubmit}
+      >
+        <Form autoComplete="off">
+          <Box marginY={2} sx={{ width: 350 }}>
+            <Field
+              component={TextField}
+              label="Name*"
+              type="text"
+              name="name"
+              size="small"
+              fullWidth
+            />
+          </Box>
 
-        <Box marginY={4} sx={{ width: 350 }}>
-          <FormikField
-            component={TextField}
-            label="Number*"
-            type="tel"
-            name="number"
-            size="small"
-            fullWidth
-          />
-        </Box>
+          <Box marginY={4} sx={{ width: 350 }}>
+            <Field
+              component={TextField}
+              label="Number*"
+              type="tel"
+              name="number"
+              size="small"
+              fullWidth
+            />
+          </Box>
 
-        <Button type="submit" fullWidth variant="contained" size="medium">
-          Add contact
-        </Button>
-      </FormikForm>
-    </Formik>
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            size="medium"
+            sx={{ mb: 7 }}
+          >
+            Add contact
+          </Button>
+        </Form>
+      </Formik>
+    </>
   );
 };
