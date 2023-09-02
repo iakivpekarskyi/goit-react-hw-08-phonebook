@@ -35,7 +35,6 @@ export const ContactListItem = ({ id, name, number }) => {
           onClick={() => removeContact(id)}
         />
       </Box>
-      <Divider sx={{ width: 1, pb: 1, mb: 1 }} />
     </List>
   );
 };

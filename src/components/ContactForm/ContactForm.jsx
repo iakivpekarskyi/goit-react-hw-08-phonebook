@@ -51,7 +51,7 @@ export const ContactForm = () => {
         onSubmit={handleSubmit}
       >
         <Form autoComplete="off">
-          <Box marginY={2} sx={{ width: 350 }}>
+          <Box marginY={1} sx={{ width: 350 }}>
             <Field
               component={TextField}
               label="Name*"
@@ -59,10 +59,11 @@ export const ContactForm = () => {
               name="name"
               size="small"
               fullWidth
+              autoFocus
             />
           </Box>
 
-          <Box marginY={4} sx={{ width: 350 }}>
+          <Box marginY={2} sx={{ width: 350 }}>
             <Field
               component={TextField}
               label="Number*"

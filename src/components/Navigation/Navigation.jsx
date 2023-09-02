@@ -1,18 +1,17 @@
-// import { useAuth } from 'hooks';
-import { Container, Link } from './Navigation.styled';
+import { NavLink } from 'react-router-dom';
+import { Box, Button } from '@mui/material';
+
+import React from 'react';
 
 export const Navigation = () => {
-  //   const { isLoggedIn } = useAuth();
-
   return (
-    <Container>
-      <nav>
-        <Link to="/">Home</Link>
-        <Link to="/login">Log In</Link>
-        <Link to="/register">Register</Link>
-        <Link to="/contacts">Contacts</Link>
-        {/* {isLoggedIn && <Link to="/contacts">Contacts</Link>} */}
-      </nav>
-    </Container>
+    <Box
+      component="nav"
+      sx={{ flexGrow: 1, flexWrap: 'wrap', display: { xs: 'flex' } }}
+    >
+      <NavLink to="/">
+        <Button variant="contained">Home</Button>
+      </NavLink>
+    </Box>
   );
 };
