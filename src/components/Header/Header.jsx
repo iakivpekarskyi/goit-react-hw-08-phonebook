@@ -1,6 +1,6 @@
 import { Navigation } from '../Navigation/Navigation';
 import { Authorization } from '../Authorization/Authorization';
-import { UserMenu } from '../UserMenu/UserMenu';
+// import { UserMenu } from '../UserMenu/UserMenu';
 // import { useAuth } from 'hooks';
 
 import AppBar from '@mui/material/AppBar';
@@ -11,7 +11,12 @@ import { Grid } from '@mui/material';
 export const Header = () => {
   // const { isLoggedIn } = useAuth();
   return (
-    <AppBar position="fixed" sx={{ backgroundColor: 'white' }}>
+    <AppBar
+      position="fixed"
+      enableColorOnDark
+      sx={{ backgroundColor: 'white' }}
+      elevation={1}
+    >
       <Container maxWidth="md">
         <Toolbar disableGutters>
           <Grid container spacing={1}>
