@@ -40,24 +40,17 @@ const defaultTheme = createTheme();
 export default function RegisterForm() {
   const dispatch = useDispatch();
 
-  const [name, setName] = React.useState('');
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
-
   const handleSubmit = event => {
     event.preventDefault();
+    const data = new FormData(event.currentTarget);
+
+    const name = data.get('name');
+    console.log(name);
+    const email = data.get('email');
+    console.log(email);
+    const password = data.get('password');
 
     dispatch(register({ name, email, password }));
-  };
-
-  const handleChangeName = event => {
-    setName(event.target.value);
-  };
-  const handleChangeEmail = event => {
-    setEmail(event.target.value);
-  };
-  const handleChangePassword = event => {
-    setPassword(event.target.value);
   };
 
   return (
@@ -90,12 +83,10 @@ export default function RegisterForm() {
                 <TextField
                   required
                   fullWidth
-                  id="Name"
+                  id="name"
                   label="Name"
-                  name="Name"
-                  autoComplete="name"
-                  value={name}
-                  onChange={handleChangeName}
+                  name="name"
+                  autoComplete="off"
                 />
               </Grid>
               <Grid item xs={12}>
@@ -105,22 +96,18 @@ export default function RegisterForm() {
                   id="email"
                   label="Email Address"
                   name="email"
-                  autoComplete="email"
-                  value={email}
-                  onChange={handleChangeEmail}
+                  autoComplete="off"
                 />
               </Grid>
               <Grid item xs={12}>
                 <TextField
                   required
                   fullWidth
+                  id="password"
                   name="password"
                   label="Password"
                   type="password"
-                  id="password"
-                  autoComplete="new-password"
-                  value={password}
-                  onChange={handleChangePassword}
+                  autoComplete="off"
                 />
               </Grid>
               <Grid item xs={12}>

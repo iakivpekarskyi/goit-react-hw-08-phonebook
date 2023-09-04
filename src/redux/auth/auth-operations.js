@@ -8,7 +8,9 @@ export const register = createAsyncThunk('auth/register', async credentials => {
     const response = await axios.post('/users/signup', credentials);
 
     return response.data;
-  } catch (error) {}
+  } catch (error) {
+    throw new Error('Registration failed');
+  }
 });
 
 export const logIn = createAsyncThunk('auth/login', async credentials => {
@@ -16,7 +18,9 @@ export const logIn = createAsyncThunk('auth/login', async credentials => {
     const response = await axios.post('/users/login', credentials);
 
     return response.data;
-  } catch (error) {}
+  } catch (error) {
+    throw new Error('Login failed');
+  }
 });
 
 export const logOut = createAsyncThunk('auth/logout', async () => {
@@ -24,5 +28,7 @@ export const logOut = createAsyncThunk('auth/logout', async () => {
     await axios.post('/users/logout');
 
     return null;
-  } catch (error) {}
+  } catch (error) {
+    throw new Error('Logout failed');
+  }
 });
