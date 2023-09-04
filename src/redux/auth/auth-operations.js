@@ -18,3 +18,11 @@ export const logIn = createAsyncThunk('auth/login', async credentials => {
     return response.data;
   } catch (error) {}
 });
+
+export const logOut = createAsyncThunk('auth/logout', async () => {
+  try {
+    await axios.post('/users/logout');
+
+    return null;
+  } catch (error) {}
+});

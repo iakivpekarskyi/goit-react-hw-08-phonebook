@@ -1,15 +1,14 @@
 import { Navigation } from '../Navigation/Navigation';
 import { AuthNav } from '../AuthNav/AuthNav';
-// import { UserMenu } from '../UserMenu/UserMenu';
-// import { useAuth } from 'hooks';
-
 import AppBar from '@mui/material/AppBar';
 import Container from '@mui/material/Container';
 import Toolbar from '@mui/material/Toolbar';
 import { Grid } from '@mui/material';
+import { UserMenu } from 'components/UserMenu/UserMenu';
+import { useLog } from 'hooks/useLog';
 
 export const Header = () => {
-  // const { isLoggedIn } = useAuth();
+  const { isLoggedIn } = useLog();
   return (
     <AppBar
       position="fixed"
@@ -21,15 +20,10 @@ export const Header = () => {
         <Toolbar disableGutters>
           <Grid container spacing={1}>
             <Navigation />
-            {/* <UserMenu /> */}
-            <AuthNav />
+            {isLoggedIn ? <UserMenu /> : <AuthNav />}
           </Grid>
         </Toolbar>
       </Container>
     </AppBar>
   );
 };
-
-//  {
-//    isLoggedIn ? <UserMenu /> : <AuthNav />;
-//  }
