@@ -13,6 +13,10 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
+import { register } from 'redux/auth/auth-operations';
+import { useDispatch } from 'react-redux';
+import { NavLink } from 'react-router-dom';
+
 function Copyright(props) {
   return (
     <Typography
@@ -23,7 +27,7 @@ function Copyright(props) {
     >
       {'Copyright © '}
       <Link color="inherit" href="https://mui.com/">
-        Your Website
+        GOIT Academy
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -31,18 +35,29 @@ function Copyright(props) {
   );
 }
 
-// TODO remove, this demo shouldn't need to reset the theme.
-
 const defaultTheme = createTheme();
 
-export default function SignUp() {
+export default function RegisterForm() {
+  const dispatch = useDispatch();
+
+  const [name, setName] = React.useState('');
+  const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.useState('');
+
   const handleSubmit = event => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+
+    dispatch(register({ name, email, password }));
+  };
+
+  const handleChangeName = event => {
+    setName(event.target.value);
+  };
+  const handleChangeEmail = event => {
+    setEmail(event.target.value);
+  };
+  const handleChangePassword = event => {
+    setPassword(event.target.value);
   };
 
   return (
@@ -63,6 +78,7 @@ export default function SignUp() {
           <Typography component="h1" variant="h5">
             Register
           </Typography>
+
           <Box
             component="form"
             noValidate
@@ -70,25 +86,16 @@ export default function SignUp() {
             sx={{ mt: 3 }}
           >
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  autoComplete="given-name"
-                  name="firstName"
-                  required
-                  fullWidth
-                  id="firstName"
-                  label="First Name"
-                  autoFocus
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12}>
                 <TextField
                   required
                   fullWidth
-                  id="lastName"
-                  label="Last Name"
-                  name="lastName"
-                  autoComplete="family-name"
+                  id="Name"
+                  label="Name"
+                  name="Name"
+                  autoComplete="name"
+                  value={name}
+                  onChange={handleChangeName}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -99,6 +106,8 @@ export default function SignUp() {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
+                  value={email}
+                  onChange={handleChangeEmail}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -110,6 +119,8 @@ export default function SignUp() {
                   type="password"
                   id="password"
                   autoComplete="new-password"
+                  value={password}
+                  onChange={handleChangePassword}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -131,9 +142,9 @@ export default function SignUp() {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="#" variant="body2">
+                <NavLink to="/login" variant="body2">
                   Already have an account? Sign in
-                </Link>
+                </NavLink>
               </Grid>
             </Grid>
           </Box>

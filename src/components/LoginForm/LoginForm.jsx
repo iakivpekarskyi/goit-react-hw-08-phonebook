@@ -12,6 +12,9 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { NavLink } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { logIn } from 'redux/auth/auth-operations';
 
 function Copyright(props) {
   return (
@@ -33,14 +36,16 @@ function Copyright(props) {
 
 const defaultTheme = createTheme();
 
-const LoginForm = () => {
+export default function LoginForm() {
+  const dispatch = useDispatch();
+
   const handleSubmit = event => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+
+    const email = data.get('email');
+    const password = data.get('password');
+    dispatch(logIn({ email, password }));
   };
 
   return (
@@ -106,9 +111,9 @@ const LoginForm = () => {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <NavLink to="/register" variant="body2">
                   {"Don't have an account? Sign Up"}
-                </Link>
+                </NavLink>
               </Grid>
             </Grid>
           </Box>
@@ -117,6 +122,4 @@ const LoginForm = () => {
       </Container>
     </ThemeProvider>
   );
-};
-
-export default LoginForm;
+}

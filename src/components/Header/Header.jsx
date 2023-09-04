@@ -1,5 +1,5 @@
 import { Navigation } from '../Navigation/Navigation';
-import { Authorization } from '../Authorization/Authorization';
+import { AuthNav } from '../AuthNav/AuthNav';
 // import { UserMenu } from '../UserMenu/UserMenu';
 // import { useAuth } from 'hooks';
 
@@ -22,7 +22,7 @@ export const Header = () => {
           <Grid container spacing={1}>
             <Navigation />
             {/* <UserMenu /> */}
-            <Authorization />
+            <AuthNav />
           </Grid>
         </Toolbar>
       </Container>

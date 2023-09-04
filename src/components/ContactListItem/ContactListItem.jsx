@@ -1,7 +1,7 @@
 import { useContacts } from 'hooks/useContact';
 
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
-import { Box, Divider, List, Typography } from '@mui/material';
+import { Box, List, Typography } from '@mui/material';
 
 export const ContactListItem = ({ id, name, number }) => {
   const { removeContact } = useContacts();
