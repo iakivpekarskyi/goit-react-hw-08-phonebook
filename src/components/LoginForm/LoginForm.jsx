@@ -37,6 +37,7 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function LoginForm() {
+  const formRef = React.useRef(null);
   const dispatch = useDispatch();
 
   const handleSubmit = event => {
@@ -46,6 +47,7 @@ export default function LoginForm() {
     const email = data.get('email');
     const password = data.get('password');
     dispatch(logIn({ email, password }));
+    formRef.current.reset();
   };
 
   return (
@@ -68,6 +70,7 @@ export default function LoginForm() {
           </Typography>
           <Box
             component="form"
+            ref={formRef}
             onSubmit={handleSubmit}
             noValidate
             sx={{ mt: 1 }}

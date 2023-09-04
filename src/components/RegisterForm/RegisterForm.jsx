@@ -39,18 +39,20 @@ const defaultTheme = createTheme();
 
 export default function RegisterForm() {
   const dispatch = useDispatch();
+  const formRef = React.useRef(null);
 
   const handleSubmit = event => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
 
     const name = data.get('name');
-    console.log(name);
+
     const email = data.get('email');
-    console.log(email);
+
     const password = data.get('password');
 
     dispatch(register({ name, email, password }));
+    formRef.current.reset();
   };
 
   return (
@@ -73,6 +75,7 @@ export default function RegisterForm() {
           </Typography>
 
           <Box
+            ref={formRef}
             component="form"
             noValidate
             onSubmit={handleSubmit}

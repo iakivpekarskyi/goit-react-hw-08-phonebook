@@ -13,10 +13,10 @@ export function UserMenu() {
   return (
     <Box component="div" sx={{ display: 'flex', alignItems: 'center' }}>
       <Typography sx={{ color: '#2990ff' }} variant="h6">
-        Welcome, {user.name}
+        You are logged in as, {user.name}
       </Typography>
       <LogoutIcon
-        sx={{ color: '#2990ff', ml: 14, cursor: 'pointer' }}
+        sx={{ color: '#2990ff', ml: 4, cursor: 'pointer' }}
         onClick={() => dispatch(logOut())}
       />
     </Box>
