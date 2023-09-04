@@ -35,16 +35,3 @@ export const store = configureStore({
 });
 
 export const persistor = persistStore(store);
-
-// import { combineReducers, configureStore } from '@reduxjs/toolkit';
-// import { filterReducer } from './filterSlice';
-// import { contactsReducer } from './contactsSlice';
-
-// const rootReducer = combineReducers({
-//   contacts: contactsReducer,
-//   filter: filterReducer,
-// });
-
-// export const store = configureStore({
-//   reducer: rootReducer,
-// });
