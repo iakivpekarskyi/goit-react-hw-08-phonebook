@@ -1,8 +1,12 @@
-import { useLog } from 'hooks/useLog';
-import { Navigate } from 'react-router-dom';
+// import { useLog } from 'hooks/useLog';
+// import { Navigate, Outlet } from 'react-router-dom';
 
-export const RestrictedRoute = ({ component: Component, redirectTo = '/' }) => {
-  const { isLoggedIn } = useLog();
+// export default function PublicRoute() {
+//   const { isLoggedIn } = useLog();
 
-  return isLoggedIn ? <Navigate to={redirectTo} /> : Component;
-};
+//   if (isLoggedIn) {
+//     return <Navigate to="/" />;
+//   }
+
+//   return <Outlet />;
+// }
