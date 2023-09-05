@@ -4,10 +4,8 @@ import { Outlet, useNavigate } from 'react-router-dom';
 export default function PrivateRoute() {
   const { isLoggedIn } = useLog();
   const navigate = useNavigate();
-  console.log('PrivateRoute - isLoggedIn:', isLoggedIn);
 
   if (!isLoggedIn) {
-    console.log('PrivateRoute - Redirecting to /login');
     navigate('/login');
     return null;
   }
