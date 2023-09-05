@@ -39,6 +39,7 @@ const defaultTheme = createTheme();
 export default function LoginForm() {
   const formRef = React.useRef(null);
   const dispatch = useDispatch();
+  dispatch({ type: 'LOGIN_SUCCESS', isLoggedIn: true });
 
   const handleSubmit = event => {
     event.preventDefault();
