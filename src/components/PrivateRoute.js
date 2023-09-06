@@ -1,14 +1,14 @@
 import { useLog } from 'hooks/useLog';
-import { Navigate, Outlet } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
-export default function PrivateRoute() {
-  const { isLoggedIn } = useLog();
+/**
+ * - If the route is private and the user is logged in, render the component
+ * - Otherwise render <Navigate> to redirectTo
+ */
 
-  if (!isLoggedIn) {
-    return <Navigate to="/" />;
-  }
+export const PrivateRoute = ({ component: Component, redirectTo = '/' }) => {
+  const { isLoggedIn, isRefreshing } = useLog();
+  const shouldRedirect = !isLoggedIn && !isRefreshing;
 
-  return <Outlet />;
-}
-
-// In React Router version 6, the Redirect component has been replaced with the useNavigate hook, which allows you to programmatically navigate to a different route. To achieve the same functionality as the Redirect component in version 6, you can do the following:
+  return shouldRedirect ? <Navigate to={redirectTo} /> : Component;
+};
